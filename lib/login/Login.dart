@@ -243,12 +243,12 @@ class _LoginState extends State<Login> {
 
     if (mailForm == savedUser.mail && passForm == savedUser.password) {
       print("LOGIN EFETUADO COM SUCESSO!");
-    } else {
-      print("DADOS INVÁLIDOS!");
-    }
 
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Home()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Home()));
+    } else {
+      print("DADOS INVÁLIDOS");
+    }
   }
 
   Future<LoginModel> _getSavedUser() async {
