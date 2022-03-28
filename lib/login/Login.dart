@@ -1,9 +1,13 @@
-import 'package:cadastro_clientes/Home.dart';
-import 'package:cadastro_clientes/values/custom_colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:convert';
 
-import 'CadastroLogin.dart';
+import 'package:cadastro_clientes/home/Home.dart';
+import 'package:cadastro_clientes/models/LoginModel.dart';
+import 'package:cadastro_clientes/values/custom_colors.dart';
+import 'package:cadastro_clientes/values/preferences_keys.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../cadastro/CadastroLogin.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -14,10 +18,11 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   // CONTROLADORES
-  TextEditingController txtemail = TextEditingController();
-  TextEditingController txtsenha = TextEditingController();
+  TextEditingController _mailInputController = TextEditingController();
+  TextEditingController _passwordInputController = TextEditingController();
 
-  bool continueConnected = false;
+  bool _obscureText = true;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +56,22 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Form(
+                key: _formKey,
                 child: Column(
                   children: [
                     const SizedBox(
                       height: 10,
                     ),
                     TextFormField(
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "campo obrigatório";
+                        } else if (!value.contains("@")) {
+                          return 'email inválido';
+                        }
+                        return null;
+                      },
+                      controller: _mailInputController,
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
@@ -81,6 +96,13 @@ class _LoginState extends State<Login> {
                       height: 10,
                     ),
                     TextFormField(
+                      validator: (value) {
+                        if (value!.length < 6) {
+                          return "senha deve conter 6 caracteres";
+                        }
+                      },
+                      obscureText: _obscureText,
+                      controller: _passwordInputController,
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
@@ -126,11 +148,11 @@ class _LoginState extends State<Login> {
               Row(
                 children: [
                   Checkbox(
-                    value: continueConnected,
+                    value: _obscureText,
                     onChanged: (bool? newValue) {
                       setState(
                         () {
-                          continueConnected = newValue!;
+                          _obscureText = newValue!;
                         },
                       );
                     },
@@ -151,14 +173,8 @@ class _LoginState extends State<Login> {
                 ),
 
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const Home(),
-                    ),
-                  );
+                  _doLogin();
                 },
-
                 style: ElevatedButton.styleFrom(
                   primary: CustomColors().getActivePrimaryButton(),
                   shape: RoundedRectangleBorder(
@@ -186,7 +202,7 @@ class _LoginState extends State<Login> {
               ),
               /////
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -213,5 +229,34 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void _doLogin() async {
+    if (_formKey.currentState!.validate()) {
+      print("válido");
+    } else {
+      print("inválido");
+    }
+    String mailForm = _mailInputController.text;
+    String passForm = _passwordInputController.text;
+    LoginModel savedUser = await _getSavedUser();
+
+    if (mailForm == savedUser.mail && passForm == savedUser.password) {
+      print("LOGIN EFETUADO COM SUCESSO!");
+    } else {
+      print("DADOS INVÁLIDOS!");
+    }
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Home()));
+  }
+
+  Future<LoginModel> _getSavedUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? jsonUser = prefs.getString(PreferencesKeys.activeUser);
+    print(jsonUser);
+    Map<String, dynamic> mapUser = json.decode(jsonUser!);
+    LoginModel user = LoginModel.fromJson(mapUser);
+    return user;
   }
 }

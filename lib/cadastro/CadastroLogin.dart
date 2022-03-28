@@ -1,10 +1,13 @@
-import 'package:cadastro_clientes/Login.dart';
-import 'package:cadastro_clientes/values/custom_colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:convert';
 
-import 'Home.dart';
-import 'TrataTextTelefone.dart';
+import 'package:cadastro_clientes/models/LoginModel.dart';
+import 'package:cadastro_clientes/values/custom_colors.dart';
+import 'package:cadastro_clientes/values/preferences_keys.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../home/Home.dart';
+import '../TrataTextTelefone.dart';
 
 class CadastroLogin extends StatefulWidget {
   const CadastroLogin({Key? key}) : super(key: key);
@@ -14,9 +17,10 @@ class CadastroLogin extends StatefulWidget {
 }
 
 class _CadastroLoginState extends State<CadastroLogin> {
-  TextEditingController txtnome = TextEditingController();
-  TextEditingController txtemail = TextEditingController();
-  TextEditingController txtsenha = TextEditingController();
+  TextEditingController _nameInputController = TextEditingController();
+  TextEditingController _mailInputController = TextEditingController();
+  TextEditingController _passwordInputController = TextEditingController();
+  TextEditingController _confimInputController = TextEditingController();
 
   bool showPassword = false;
 
@@ -55,6 +59,7 @@ class _CadastroLoginState extends State<CadastroLogin> {
                 child: Column(
                   children: [
                     TextFormField(
+                      controller: _nameInputController,
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
@@ -79,6 +84,7 @@ class _CadastroLoginState extends State<CadastroLogin> {
                       height: 10,
                     ),
                     TextFormField(
+                      controller: _mailInputController,
                       autofocus: true,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
@@ -103,6 +109,7 @@ class _CadastroLoginState extends State<CadastroLogin> {
                       height: 10,
                     ),
                     TextFormField(
+                      controller: _passwordInputController,
                       autofocus: true,
                       obscureText: (showPassword == true) ? false : true,
                       style: const TextStyle(color: Colors.white),
@@ -131,6 +138,7 @@ class _CadastroLoginState extends State<CadastroLogin> {
                     /// OPERADOR TERNARIO /////
                     (showPassword == false)
                         ? TextFormField(
+                            controller: _confimInputController,
                             autofocus: true,
                             style: const TextStyle(color: Colors.white),
                             decoration: const InputDecoration(
@@ -189,11 +197,11 @@ class _CadastroLoginState extends State<CadastroLogin> {
 
               /////
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => const Login()));
+                    _doSignUp();
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     "Salvar",
@@ -213,6 +221,27 @@ class _CadastroLoginState extends State<CadastroLogin> {
           ),
         ),
       ),
+    );
+  }
+
+  void _doSignUp() {
+    LoginModel newUser = LoginModel(
+      name: _nameInputController.text,
+      mail: _mailInputController.text,
+      password: _passwordInputController.text,
+      keepOn: true,
+    );
+
+    print(newUser);
+    _saveUser(newUser);
+  }
+
+  // salva os dados localmente acessando o dicionário da memória
+  void _saveUser(LoginModel user) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString(
+      PreferencesKeys.activeUser,
+      json.encode(user.toJson()),
     );
   }
 }
