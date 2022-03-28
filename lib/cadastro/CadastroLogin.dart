@@ -208,7 +208,7 @@ class _CadastroLoginState extends State<CadastroLogin> {
                     style: TextStyle(color: Colors.white),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: CustomColors().getActiveSecondButton(),
+                    primary: CustomColors().getThirdButton(),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     ),
