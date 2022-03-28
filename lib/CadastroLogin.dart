@@ -182,16 +182,9 @@ class _CadastroLoginState extends State<CadastroLogin> {
                 ),
               ),
               // ESQUECEU A SENHA
-              const Padding(
-                padding: EdgeInsets.only(bottom: 10),
-              ),
-
-              const Padding(
-                padding: EdgeInsets.only(bottom: 10),
-              ),
 
               const SizedBox(
-                height: 8,
+                height: 10,
               ),
 
               /////
