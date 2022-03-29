@@ -6,9 +6,6 @@ import 'package:cadastro_clientes/values/preferences_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../home/Home.dart';
-import '../TrataTextTelefone.dart';
-
 class CadastroLogin extends StatefulWidget {
   const CadastroLogin({Key? key}) : super(key: key);
 
