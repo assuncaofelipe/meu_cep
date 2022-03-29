@@ -1,16 +1,34 @@
-# cadastro_clientes
+# Meu Cep
 
-A new Flutter project.
+#### Workspace
+A IDE usada para desenvolver o projeto: [Visual Studio Code](https://code.visualstudio.com/).
+O sistema operacional: Windows 11 x64.
 
-## Getting Started
+#### Instalação do Flutter
+Para instalar o flutter em sua máquina: [online documentation](https://docs.flutter.dev/get-started/install),
 
-This project is a starting point for a Flutter application.
+#### Versão usada do Flutter  
+>Flutter 2.10.4 • channel stable • https://github.com/flutter/flutter.git
+>Framework • revision c860cba910 (4 days ago) • 2022-03-25 00:23:12 -0500
+>Engine • revision 57d3bac3dd
+>Tools • Dart 2.16.2 • DevTools 2.9.2 
 
-A few resources to get you started if this is your first Flutter project:
+#### Para rodar o projeto usando o Android Studio
+[Migrar para o Android Studio](https://developer.android.com/studio/intro/migrate?hl=pt-br)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#### Dependencias usadas no projeto
+>[shared_preferences: ^2.0.13](https://pub.dev/packages/shared_preferences)
+> [http: ^0.13.4](https://pub.dev/packages/http)
+>[http_parser: ^4.0.0]("https://pub.dev/packages/http_parser")
+
+
+### Rodando o projeto
+Clone do repositório 
+```git clone https://github.com/assuncaofelipe/meu_cep.git```
+
+Acesse o projeto
+```cd .\meu_cep\```
+
+Execute o comando
+```flutter run```
