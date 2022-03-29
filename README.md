@@ -13,14 +13,14 @@ Para instalar o flutter em sua máquina: [online documentation](https://docs.flu
 >Engine • revision 57d3bac3dd <p>
 >Tools • Dart 2.16.2 • DevTools 2.9.2  <p>
 
-#### Para rodar o projeto usando o Android Studio
+#### Para importar e rodar o projeto usando o Android Studio
 [Migrar para o Android Studio](https://developer.android.com/studio/intro/migrate?hl=pt-br)
 
 
 #### Dependencias usadas no projeto
 >[shared_preferences: ^2.0.13](https://pub.dev/packages/shared_preferences) <p>
 >[http: ^0.13.4](https://pub.dev/packages/http) <p>
->[http_parser: ^4.0.0]("https://pub.dev/packages/http_parser") <p>
+>[http_parser: ^4.0.0](https://pub.dev/packages/http_parser) <p>
 
 
 ### Rodando o projeto
