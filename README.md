@@ -32,3 +32,21 @@ Acesse o projeto
 
 Execute o comando
 ```flutter run```
+
+## Peguntas e respostas do desafio
+
+#### 1. A solução deve ser disponibilizada em Cloud ou On-premise?
+- Cloud
+
+#### 2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, responda qual ferramenta acreditas ser apropriada para o controle de tarefas da equipe, a ferramenta é ágil? 
+- A ferramenta "Jira (https://asana.com/pt)", pois é uma ferramenta que usufri do quadro Kanban e metodologia Scrum. Além de oferecer a sincronização de repositórios de projetos.
+- Sim, é uma ferramenta ágil.
+
+#### 3. Você se sente capaz de liderar esta equipe? Por quê?
+- Não, pois acredito que para a liderança de uma equipe é preciso ter maior conhecimento de gestão de projetos.
+
+#### 4. Se pudesse sugerir uma melhoria, mudança ou oportunidade. O que seria?
+- Investimento em treinamentos para equipes de desenvolvimento. 
+
+#### 5. Acha válido esse desafio para o processo que está participando?
+- sim
