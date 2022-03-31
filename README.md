@@ -8,7 +8,7 @@ O sistema operacional: Windows 11 x64.
 Para instalar o flutter em sua máquina: [online documentation](https://docs.flutter.dev/get-started/install),
 
 #### Versão usada do Flutter  
->Flutter 2.10.4 • channel stable • https://github.com/flutter/flutter.git <p>
+>Flutter 2.10.4 • [channel stable](https://github.com/flutter/flutter.git) <p>
 >Framework • revision c860cba910 (4 days ago) • 2022-03-25 00:23:12 -0500 <p>
 >Engine • revision 57d3bac3dd <p>
 >Tools • Dart 2.16.2 • DevTools 2.9.2  <p>
