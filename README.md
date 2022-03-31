@@ -39,7 +39,7 @@ Execute o comando
 - Cloud
 
 #### 2. Considerando a participação de 4 pessoas técnicas para o desenvolvimento dessa solução, responda qual ferramenta acreditas ser apropriada para o controle de tarefas da equipe, a ferramenta é ágil? 
-- A ferramenta "Jira (https://www.atlassian.com/br/software/jira)", pois é uma ferramenta que utiliza do quadro Kanban e metodologia Scrum. Além de oferecer a sincronização de repositórios de projetos.
+- A ferramenta [Jira](https://www.atlassian.com/br/software/jira), pois é uma ferramenta que utiliza do quadro Kanban e metodologia Scrum. Além de oferecer a sincronização de repositórios de projetos.
 - Sim, é uma ferramenta ágil.
 
 #### 3. Você se sente capaz de liderar esta equipe? Por quê?
